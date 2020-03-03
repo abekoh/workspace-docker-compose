@@ -6,4 +6,4 @@ mvn install -DskipTests
 cd ../
 
 # copy initial sql
-cp webflux-todo/src/main/resources/schema.sql mysql_data/
+cp webflux-todo/src/main/resources/schema.sql mysql_init/
