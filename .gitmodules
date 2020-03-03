@@ -1,0 +1,6 @@
+[submodule "webflux-todo"]
+	path = webflux-todo
+	url = https://github.com/abekoh/webflux-todo
+[submodule "workspace-front"]
+	path = workspace-front
+	url = https://github.com/abekoh/workspace-front
