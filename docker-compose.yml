@@ -1,33 +1,31 @@
 version: '2'
 services:
-  # db:
-  #   image: mysql:latest
-  #   container_name: todo-mysql
-  #   ports:
-  #     - "33306:3306"
-  #   volumes:
-  #     - ./mysql_data:/var/lib/mysql
-  #     - ./mysql_init:/docker-entrypoint-initdb.d
-  #   environment:
-  #     MYSQL_DATABASE: todo
-  #     MYSQL_ROOT_PASSWORD: toor
-  #     MYSQL_USER: abekoh
-  #     MYSQL_PASSWORD: hokeba
-  #   restart: always
-  # backend:
-  #   image: openjdk:11
-  #   container_name: todo-backend
-  #   volumes:
-  #     - ./webflux-todo/target:/app
-  #   working_dir: /app
-  #   ports:
-  #     - "9000:8080"
-  #   command: >
-  #     java -jar webflux-todo.jar
-  #     --spring.profiles.active=compose
-  #   links:
-  #     - db
-  #   restart: always
+  db:
+    image: mysql:latest
+    container_name: todo-mysql
+    ports:
+      - "33306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./mysql_init:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: todo
+      MYSQL_ROOT_PASSWORD: toor
+    restart: always
+  backend:
+    image: openjdk:11
+    container_name: todo-backend
+    volumes:
+      - ./webflux-todo/target:/app
+    working_dir: /app
+    ports:
+      - "9000:8080"
+    command: >
+      java -jar webflux-todo.jar
+      --spring.profiles.active=compose
+    links:
+      - db
+    restart: always
   frontend:
     image: node:12.14.0
     container_name: todo-frontend
@@ -41,6 +39,6 @@ services:
     working_dir: /app
     command: >
       npm run start:compose
-    # links:
-    #   - backend
+    links:
+      - backend
     restart: always
