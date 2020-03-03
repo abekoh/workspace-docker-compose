@@ -19,11 +19,11 @@ services:
     container_name: todo-backend
     volumes:
       - "./jar:/app"
-    working_dir:
+    working_dir: /app
     ports:
       - "9000:8080"
     command: >
-      java -jar webflux-todo.jar
+      java -jar webflux-todo/target/webflux-todo.jar
       --spring.profiles.active=compose
     links:
       - db
