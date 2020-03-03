@@ -41,7 +41,7 @@ services:
     working_dir: /app
     command: >
       bash -c
-      "npm install && npmrun build:compose && npm run start:compose"
+      "npm install && npm run build:compose && npm run start:compose"
     links:
       - backend
     restart: always
